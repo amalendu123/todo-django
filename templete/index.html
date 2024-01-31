@@ -1,0 +1,31 @@
+<div style="display: flex;flex-direction: column;justify-content: center;align-items: center; background-color: black;height: 100%;width: 100%;">
+    <div style="border: 1px;display: flex;flex-direction: column;border-color: white;background-color: violet;padding: 10px;justify-content: center;align-items: center;width: 500px;">
+        <h1 style="text-align: center;">Todo</h1>
+        <table style="border-spacing: 10px;">
+            {% if todo %} 
+            <tr>
+                <th>todo</th>
+                <th>date</th>
+                <th>edit/delete</th>
+              </tr>
+            {% for i in todo %}
+              <tr>
+                <td>{{i.todoItem}} </td>
+                <td>{{i.dateToComplete}}</td>
+                <td><a href="{% url 'edit' i.id %}">edit</a>/<a href="{% url 'delete' i.id %}">delete</a></td>
+              </tr>
+            {% endfor %}
+            {%else%}
+              <h3>add things to complete</h3>
+            {%endif%}
+        </table>
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">add</button>
+            </form>
+        </div>
+    </div>
+   
+</div>

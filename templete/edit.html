@@ -1,0 +1,10 @@
+<div style="display: flex;flex-direction: column;justify-content: center;align-items: center; background-color: black;height: 100%;width: 100%;">
+    <div style="border: 1px;display: flex;flex-direction: column;border-color: white;background-color: violet;padding: 10px;justify-content: center;align-items: center;width: 500px;">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">add</button>
+        </form>
+    </div>
+   
+</div>
